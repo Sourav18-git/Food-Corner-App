@@ -1,28 +1,33 @@
 import styled from 'styled-components'
 import { BASE_URL, Container } from '../../App';
 import { Button } from '../../App';
+import Rating from './Rating';
 export default function SearchResult({ data }) {
   return (
     <FoodCardContainer>
-    <Container>
-    <FoodCards>
-        {data?.map((food) => (
-          <FoodCard key={food.name}>
-            <div className="food_image">
-              <img src={BASE_URL+food.image} alt="" />
-            </div>
-            <div className="food_info">
-              <div className="info">
-                <h3>{food.name}</h3>
-                <p>{food.text}</p>
+      <Container>
+        <FoodCards>
+          {data?.map((food) => (
+            <FoodCard key={food.name}>
+              <div className="food_image">
+                <img src={BASE_URL + food.image} alt="" />
               </div>
-              <Button>Rs {food.price.toFixed(2)}</Button>
-            </div>
-          </FoodCard>
-        ))}
-        
-      </FoodCards>
-    </Container>
+              <div className="food_info">
+                <div className="info">
+                  <h3>{food.name}</h3>
+                  <p>{food.text}</p>
+                </div>
+                <div className="rating">
+                  <Rating></Rating>
+
+                  <Button>Rs {food.price.toFixed(2)}</Button>
+                </div>
+              </div>
+            </FoodCard>
+          ))}
+
+        </FoodCards>
+      </Container>
     </FoodCardContainer>
   )
 }
@@ -71,7 +76,7 @@ padding: 8px;
   display: flex;
   flex-direction: column;
   justify-content: center;
-  align-items: end;
+  /* align-items: end; */
 }
 h3 {
       margin-top: 8px;
@@ -84,6 +89,14 @@ h3 {
     }
     button {
       font-size: 12px;
+    }
+    .rating{
+       display: flex;
+      flex-direction: row; 
+      justify-content: space-between;
+      align-items:center;
+/* padding:10px; */
+margin-top: 10px;
     }
 `;
 
